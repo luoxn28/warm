@@ -179,7 +179,7 @@ Constant pool:
 
 通过字节码可以看出，调用lambda方法时使用了`invokedynamic`，该字节码命令是为了支持动态语言特性而在Java7中新增的。Java的lambda表达式实现上也就借助于`invokedynamic`命令。
 
-字节码中每一处含有invokeDynamic指令的位置都称为**“动态调用点”**，这条指令的第一个参数不再是代表方法调用符号引用的CONSTANT_Methodref_info常亮，而是变成为JDK7新加入的CONSTANT_InvokeDynamic_info常量，从这个新常量中可得到3项信息：引导方法（Bootstrap Method，此方法存放在新增的BootstrapMethods属性中）、方法类型和名称。引导方法是有固定的参数，并且返回值是java.lang.invoke.CallSite对象，这个代表真正要执行的目标方法调用。根据CONSTANT_InvokeDynamic_info常量中提供的信息，虚拟机可以找到并执行引导方法，从而获得一个CallSite对象，最终调用要执行的目标方法。
+字节码中每一处含有invokeDynamic指令的位置都称为**动态调用点**，这条指令的第一个参数不再是代表方法调用符号引用的CONSTANT_Methodref_info常亮，而是变成为JDK7新加入的CONSTANT_InvokeDynamic_info常量，从这个新常量中可得到3项信息：引导方法（Bootstrap Method，此方法存放在新增的BootstrapMethods属性中）、方法类型和名称。引导方法是有固定的参数，并且返回值是java.lang.invoke.CallSite对象，这个代表真正要执行的目标方法调用。根据CONSTANT_InvokeDynamic_info常量中提供的信息，虚拟机可以找到并执行引导方法，从而获得一个CallSite对象，最终调用要执行的目标方法。
 
 从上述mian方法的字节码可见，有一个invokeDynamic指令，他的参数为第7项常量（第二个值为0的参数HotSpot中用不到，占位符）。
 `invokedynamic #7,  0              // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;`
