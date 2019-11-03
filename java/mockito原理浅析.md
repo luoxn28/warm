@@ -18,11 +18,11 @@ stub也就是常说的打桩，针对某些入参返回自定义数据；mock也
 
 ```java
 @Spy 
-com.youzan.trade.core.service.query.OrderQueryService$MockitoMock$10456154 -- 为null时默认注入mock对象 
-com.youzan.trade.core.service.query.OrderQueryService$$EnhancerByCGLIB$$ab5d0f7d -- 非null时注入实际对象 
+Xxx$MockitoMock$10456154 -- 为null时默认注入mock对象 
+Xxx$$EnhancerByCGLIB$$ab5d0f7d -- 非null时注入实际对象 
 
 @Mock 
-com.youzan.trade.core.service.query.OrderQueryService$MockitoMock$1251285143 -- （不管是否为null都）注入mock对象 
+Xxx$MockitoMock$1251285143 -- （不管是否为null都）注入mock对象 
 
 @InjectMocks 
 InjectMocks创建这个类的对象并自动将标记@Mock、@Spy等注解的属性值注入到这个中 
@@ -291,7 +291,6 @@ class文件内容如下：
 //
 package com.xxx;
 
-import com.youzan.owl.trade.core.biz.api.trade.MockitoMain.DubboRemoteFacade;
 import org.mockito.internal.creation.bytebuddy.MockAccess;
 import org.mockito.internal.creation.bytebuddy.MockMethodInterceptor;
 import org.mockito.internal.creation.bytebuddy.MockMethodInterceptor.DispatcherDefaultingToRealMethod;
